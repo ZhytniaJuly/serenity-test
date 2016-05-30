@@ -5,6 +5,7 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.model.ExamplesTable;
 import serenitytest.steps.serenity.EndUserSteps;
 
 public class Dictionary {
@@ -30,14 +31,16 @@ public class Dictionary {
     @When ("the user switch to TeamPage")
     public void whenTheUserSwitchToTeamPage() {endUser.is_switch_to_team_page();}
 
-    @When("click on coach '$coach'")
-    public void whenUserSwitchToCoachPage(String coach){endUser.is_switch_to_coach_page(coach);}
+    @When("click on coach $coach")
+    public void whenUserSwitchToCoachPage(String сoach){endUser.is_switch_to_coach_page(сoach);}
 
-    @Then ("see info '$coach' about coach on Coach Page")
-    public void thenUserSeeInfoAboutCoach(String coach){endUser.is_see_info_about_coach(coach);}
+    @Then ("see info $coach about coach on Coach Page")
+    public void thenUserSeeInfoAboutCoach(String сoach){endUser.is_see_info_about_coach(сoach);}
 
-    @Then ("the user should see '$foundCoach'")
-    public void thenUserShouldSeeFoundCoach(String foundCoach){endUser.should_see_coach(foundCoach);}
+    @Then ("the user should see <foundCoach>")
+    public void thenUserShouldSeeFoundCoach (String foundCoach){endUser.should_see_coach(foundCoach);}
+
+
 
     @Then("they should see the definition '$definition'")
     public void thenTheyShouldSeeADefinitionContainingTheWords(String definition) {

@@ -10,3 +10,6 @@ Given the user is on Team Page
 When click on coach 'Анастасия Педоренко'
 Then see info 'Анастасия Педоренко' about coach on Coach Page
 
+
+
+

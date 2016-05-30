@@ -18,7 +18,7 @@ public class MainPage extends PageObject {
     private By searchField = By.id("u5016-2");
     private By lookupButton = By.id("u1552-2");
     private By linkOurTeam = By.linkText("Наша команда");
-    private By ol = By.id("xsltsearch");
+    private By searchResult = By.className("xsltsearch_result");
     private By li = By.className("xsltsearch_title");
 
 
@@ -34,13 +34,14 @@ public class MainPage extends PageObject {
     }
 
     public List<String> getDefinitions() {
-        WebElementFacade definitionList = find(ol);
-        List<WebElement> results = definitionList.findElements(li);
+        List <WebElementFacade> resultList = findAll(searchResult);
         List<String> stringsNames = new ArrayList<String>();
-        for (WebElement i: results){
+        for (WebElement i : resultList){
             stringsNames.add (i.getText());
         }
+
         return stringsNames;
+
     }
 
 }
