@@ -39,10 +39,10 @@ public class TeamPage extends PageObject {
         return getAllCoachNames().contains(person);
     }
 
-    public void openCoachPage(String coach) {
-        List<WebElementFacade>  element= findAll(nameFieldInsideCard);
+    public void openCoachPage(String name) {
+        List<WebElementFacade>  element = findAll(nameFieldInsideCard);
         for (WebElement i : element) {
-            if (i.getText().contains(coach)) {
+            if (i.getText().contains(name)) {
                 i.click();
                 break;
             }

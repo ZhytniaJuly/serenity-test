@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.hasItem;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import serenitytest.pages.CoachPage;
+import serenitytest.pages.CoursePage;
 import serenitytest.pages.MainPage;
 import serenitytest.pages.TeamPage;
 import static org.junit.Assert.assertTrue;
@@ -15,6 +16,7 @@ public class EndUserSteps extends ScenarioSteps {
     MainPage mainPage;
     CoachPage coachPage;
     TeamPage teamPage;
+    CoursePage coursePage;
 
     @Step
     public void enters(String keyword) {
@@ -55,8 +57,14 @@ public class EndUserSteps extends ScenarioSteps {
     }
 
     @Step
+    public void is_switch_to_course_page(String coursePage) {
+        mainPage.openCoursesList();
+        mainPage.openCoursePage(coursePage);
+    }
+
+    @Step
     public void is_see_info_about_coach(String coach) {
-        coachPage.coachNameIsPresentAtPersonalPage(coach);
+        assertTrue(coachPage.coachNameIsPresentAtPersonalPage(coach));
     }
 
     @Step
@@ -69,5 +77,15 @@ public class EndUserSteps extends ScenarioSteps {
         teamPage.open();
     }
 
+    @Step
+    public void is_see_fool_info_about_coach(String name, String course) {
+        assertTrue(coachPage.coachNameIsPresentAtPersonalPage(name));
+        assertTrue(coachPage.courseIsPresentAtPersonalPage(course));
+    }
 
+    @Step
+    public void is_see_fool_info_about_course(String priceOfCourse, String members) {
+        assertTrue(coursePage.priceIsPresentAtCoursePage(priceOfCourse));
+        assertTrue(coursePage.membersArePresentAtCoursePage(members));
+    }
 }

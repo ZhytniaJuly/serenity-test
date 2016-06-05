@@ -10,13 +10,15 @@ import org.openqa.selenium.By;
 
 
 public class CoachPage extends PageObject {
-    private By name = By.xpath("//div[@class='greenHeader']");
+    private By fio = By.xpath("//div[@class='greenHeader']");
+    private By course1 =  By.xpath("//div[3]/div/ul/li/a");
 
-    public String getName() {
-        return (find(name).getText());
+    public boolean coachNameIsPresentAtPersonalPage(String name) {
+        return find(fio).getText().contains(name);
     }
 
-    public boolean coachNameIsPresentAtPersonalPage(String coach) {
-        return find(name).getText().contains(coach);
+    public boolean courseIsPresentAtPersonalPage(String course){
+        return find(course1).getText().contains(course);
+
     }
 }
