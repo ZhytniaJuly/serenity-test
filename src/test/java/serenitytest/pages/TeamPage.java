@@ -22,7 +22,7 @@ public class TeamPage extends PageObject {
 
 
     private By nameFieldInsideCard = By.className("name");
-
+    private By coachPost = new By.ByClassName("position");
 
 
     public List<String> getAllCoachNames() {
@@ -34,6 +34,14 @@ public class TeamPage extends PageObject {
         return stringsNames;
     }
 
+    public List<String> getAllCoachPost() {
+        List listOfCoachPost = new ArrayList();
+        List<WebElementFacade> element = findAll(coachPost);
+        for (WebElement i : element) {
+            listOfCoachPost.add(i.getText());
+        }
+        return listOfCoachPost;
+    }
 
     public Boolean checkThatPersonIsPresented(String person) {
         return getAllCoachNames().contains(person);

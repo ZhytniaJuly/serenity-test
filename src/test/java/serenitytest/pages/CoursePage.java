@@ -1,13 +1,12 @@
 package serenitytest.pages;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-
-
-import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.By;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by дима on 27.05.2016.
@@ -15,17 +14,15 @@ import org.openqa.selenium.By;
 
 
 public class CoursePage extends PageObject {
-    private By membersField = By.xpath(".//*[@id='page_position_content']/div[3]/div/div/div[1]/div/p[5]");
-    private By priceField =  By.xpath(".//*[@id='page_position_content']/div[3]/div/div/div[1]/div/p[9]");
 
-    public boolean membersArePresentAtCoursePage(String members) {
-        return find(membersField).getText().contains(members);
+    private By courseDescription = By.className("text");
+
+    public List<String> getCourseDescriptions() {
+        List<String> descriptionList = new ArrayList();
+        List<WebElementFacade> element = findAll(courseDescription);
+        for (WebElement i : element) {
+            descriptionList.add(i.getText());
+        }
+        return descriptionList;
     }
-
-    public boolean priceIsPresentAtCoursePage(String price){
-        return find(priceField).getText().contains(price);
-
-    }
-
-
 }
